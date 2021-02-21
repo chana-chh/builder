@@ -1,0 +1,26 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">&gt; slim3_builder_ - [TABLES]</h1>
+<h2 class="display-4 mb-5"><em>baza:</em> <strong class="text-danger">{{ baza }}</strong></h2>
+
+{% if tabele is null %}
+<p class="lead mb-5 text-danger">Najverovatnije nije izabrana baza!</p>
+{% else %}
+<p class="lead mb-5">Izaberi tabelu sa kojom se radi.</p>
+<form action="{{ path_for('tabele') }}" method="POST" class="row g-3">
+	<div class="col-auto">
+		<select name="tabela" id="tabela" class="form-select">
+			{% for tabela in tabele %}
+			<option>{{ tabela.naziv }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="col-auto">
+		<input type="submit" value="Izaberi tabelu" class="btn btn-primary">
+	</div>
+</form>
+{% endif %}
+
+{% endblock naslov %}

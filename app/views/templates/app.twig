@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ APP_NAME }}</title>
+  <link rel="shortcut icon" href="{{ base_url() }}/favicon.png" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/brands.min.css" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/solid.min.css" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/app.css" />
+  {% block stil %}{% endblock stil %}
+</head>
+
+<body>
+
+  <header>
+    {% include 'templates/inc/navigation.twig' %}
+  </header>
+
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        {% block naslov %}{% endblock naslov %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8">
+        {% block sadrzaj %}{% endblock sadrzaj %}
+      </div>
+      <div class="col-lg-4">
+        {% block traka %}{% endblock traka %}
+      </div>
+    </div>
+  </main>
+
+  <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+  <script src="{{ base_url() }}/js/app.js"></script>
+  {% block skripta %}{% endblock skripta %}
+</body>
+
+</html>

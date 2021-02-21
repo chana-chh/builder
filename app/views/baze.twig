@@ -1,0 +1,20 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">&gt; slim3_builder_ - [DATABASES]</h1>
+<p class="lead mb-5">Izaberi bazu sa kojom se radi.</p>
+<form action="{{ path_for('baze') }}" method="POST" class="row g-3">
+	<div class="col-auto">
+		<select name="baza" id="baza" class="form-select">
+			{% for db in baze %}
+			<option>{{ db.Database }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="col-auto">
+		<input type="submit" value="Izaberi bazu" class="btn btn-primary">
+	</div>
+</form>
+
+{% endblock naslov %}

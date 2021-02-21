@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-dark text-light navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a href="{{ path_for('pocetna') }}" class="navbar-brand text-success">
+      &gt; slim3_builder_
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path_for('pocetna') }}"><i class="fas fa-home"></i> Početna</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fab fa-php"></i> PHP
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="{{ path_for('baze') }}">Izbor baze</a>
+            <a class="dropdown-item" href="{{ path_for('tabele') }}">Izbor tabele</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path_for('rute') }}">Rute</a>
+            <a class="dropdown-item" href="{{ path_for('model') }}">Model</a>
+            <a class="dropdown-item" href="{{ path_for('kontroler') }}">Kontroler</a>
+            <a class="dropdown-item" href="{{ path_for('pogled') }}">Pogled</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

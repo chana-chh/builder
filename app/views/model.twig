@@ -1,0 +1,83 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">&gt; slim3_builder_ - [MODEL]</h1>
+
+<form action="{{ path_for('model') }}" method="POST">
+	<div class="row mb-3">
+		<div class="col-6">
+			<label for="baza" class="form-label">Baza</label>
+			<input type="text" class="form-control form-control-lg" id="baza" value="{{ baza }}" readonly>
+			<div id="bazaHelp" class="form-text">Izabrana baza podataka</div>
+		</div>
+		<div class="col-6">
+			<label for="tabela" class="form-label">Tabela</label>
+			<input type="text" class="form-control form-control-lg" id="tabela" value="{{ tabela }}" readonly>
+			<div id="tabelaHelp" class="form-text">Izabrana tabela iz baze podataka</div>
+		</div>
+	</div>
+	<div>
+		<h4>BELONGS TO</h4>
+		<table class="table table-hover">
+			<thead>
+				<tr class="table-primary">
+					<th>Polje</th>
+					<th>referencira tabelu</th>
+					<th>preko stranog polja</th>
+					<th>Vrsta veze</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for veza in belongsTo %}
+				<tr>
+					<td>{{ veza.COLUMN_NAME }}</td>
+					<td>{{ veza.REFERENCED_TABLE_NAME }}</td>
+					<td>{{ veza.REFERENCED_COLUMN_NAME }}</td>
+					<td>belongsTo</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<h4>HAS MANY</h4>
+		<table class="table table-hover">
+			<thead>
+				<tr class="table-primary">
+					<th>Tabela koja referencira</th>
+					<th>preko polja</th>
+					<th>na polje u ovoj tabeli</th>
+					<th>Vrsta veze</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for veza in hasMany %}
+				<tr>
+					<td>{{ veza.TABLE_NAME }}</td>
+					<td>{{ veza.COLUMN_NAME }}</td>
+					<td>{{ veza.REFERENCED_COLUMN_NAME }}</td>
+					<td>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio"
+								name="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}"
+								id="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}1" value="hasMany" checked>
+							<label class="form-check-label"
+								for="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}1">hasMany</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio"
+								name="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}"
+								id="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}2" value="belongsToMany">
+							<label class="form-check-label"
+								for="{{ veza.TABLE_NAME }}-{{ veza.COLUMN_NAME }}2">belongsToMany</label>
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</form>
+
+{% endblock naslov %}

@@ -1,0 +1,16 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 m-5 text-success text-center">&gt; slim3_builder_</h1>
+
+<p class="display-4 text-center mb-5">Sistem za automatsku izradu web aplikacija</p>
+
+<p class="display-3 text-center"><em>baza:</em> <strong class="text-danger">{{ baza }}</strong></p>
+<p class="display-3 text-center mb-5"><em>tabela:</em> <strong class="text-danger">{{ tabela }}</strong></p>
+
+<form action="{{ path_for('reset') }}" method="POST" class="text-center">
+	<input type="submit" value="Resetuj bazu i tabelu" class="btn btn-outline-danger btn-lg mt-5">
+</form>
+
+{% endblock naslov %}
