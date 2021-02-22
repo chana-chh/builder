@@ -2,41 +2,62 @@
 
 {% block naslov %}
 
-<h1 class="display-1 mb-5 text-success">&gt; slim3_builder_ - <span class="text-danger">[KONTROLER]</span></h1>
-
+<h1 class="display-1 mb-5 text-success">
+	&gt; slim3_builder_ - <span class="text-danger">[KONTROLER]</span> podesavanja
+</h1>
+<p class="display-6">
+	<em>baza:</em> <strong class="text-danger">{{ baza }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>tabela:</em> <strong class="text-danger">{{ tabela }}</strong>
+</p>
 <form action="{{ path_for('kontroler') }}" method="POST">
-	<div class="row mb-3">
-		<div class="col-6">
-			<label for="baza" class="form-label">Baza</label>
-			<input type="text" class="form-control form-control-lg" id="baza" value="{{ baza }}" readonly>
-			<div id="bazaHelp" class="form-text">Izabrana baza podataka</div>
-		</div>
-		<div class="col-6">
-			<label for="tabela" class="form-label">Tabela</label>
-			<input type="text" class="form-control form-control-lg" id="tabela" value="{{ tabela }}" readonly>
-			<div id="tabelaHelp" class="form-text">Izabrana tabela iz baze podataka</div>
-		</div>
-	</div>
-	<div>
-		<h4>nesto</h4>
-		<table class="table table-hover">
-			<thead>
-				<tr class="table-primary">
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
-					<td>4</td>
-				</tr>
-			</tbody>
-		</table>
+	<h4>Podesavanje kolona za kontroler</h4>
+	<table class="table table-hover">
+		<thead>
+			<tr class="table-primary">
+				<th>RB</th>
+				<th>Naziv</th>
+				<th>Tip</th>
+				<th>Duzina</th>
+				<th>Null</th>
+				<th>Default</th>
+				<th>Kljuc</th>
+				<th>REF tabela</th>
+				<th>REF kolona</th>
+				<th>Validacija</th>
+				<th>Pretraga</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for k in kolone %}
+			<tr>
+				<td>{{ k.pozicija }}</td>
+				<td>{{ k.naziv }}</td>
+				<td>{{ k.tip }}</td>
+				<td>{{ k.duzina }}</td>
+				<td>{{ k.nulabilno }}</td>
+				<td>{{ k.podrazumevano }}</td>
+				<td>{{ k.kljuc }}</td>
+				<td>{{ k.ref_tabela }}</td>
+				<td>{{ k.ref_kolona }}</td>
+				<td>
+					<div class="form-check">
+						<input name="validacija-{{ k.naziv }}" class="form-check-input" type="checkbox" value="" {{
+							(k.validacija==1) ? " checked" : "" }}>
+					</div>
+				</td>
+				<td>
+					<div class="form-check">
+						<input name="pretraga-{{ k.naziv }}" class="form-check-input" type="checkbox" value="" {{
+							(k.pretraga==1) ? " checked" : "" }}>
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="float-end">
+		<input type="submit" class="btn btn-outline-success" value="Izradi kontroler">
 	</div>
 </form>
 
