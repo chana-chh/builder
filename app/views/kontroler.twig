@@ -1,0 +1,43 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">&gt; slim3_builder_ - [KONTROLER]</h1>
+
+<form action="{{ path_for('kontroler') }}" method="POST">
+	<div class="row mb-3">
+		<div class="col-6">
+			<label for="baza" class="form-label">Baza</label>
+			<input type="text" class="form-control form-control-lg" id="baza" value="{{ baza }}" readonly>
+			<div id="bazaHelp" class="form-text">Izabrana baza podataka</div>
+		</div>
+		<div class="col-6">
+			<label for="tabela" class="form-label">Tabela</label>
+			<input type="text" class="form-control form-control-lg" id="tabela" value="{{ tabela }}" readonly>
+			<div id="tabelaHelp" class="form-text">Izabrana tabela iz baze podataka</div>
+		</div>
+	</div>
+	<div>
+		<h4>nesto</h4>
+		<table class="table table-hover">
+			<thead>
+				<tr class="table-primary">
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+
+{% endblock naslov %}

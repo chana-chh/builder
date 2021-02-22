@@ -12,5 +12,6 @@ $app->get('/rute', '\App\Controllers\RuteController:getRute')->setName('rute');
 $app->get('/model', '\App\Controllers\ModelController:getModel')->setName('model');
 
 $app->get('/kontroler', '\App\Controllers\KontrolerController:getKontroler')->setName('kontroler');
+$app->post('/kontroler', '\App\Controllers\KontrolerController:postKontroler')->setName('kontroler');
 
 $app->get('/pogled', '\App\Controllers\PogledController:getPogled')->setName('pogled');
