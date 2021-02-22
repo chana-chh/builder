@@ -14,18 +14,7 @@ class KontrolerController extends Controller
         $tabela = $izbor->tabela;
         $tip = "KONTROLER";
         $napomena = "Kontroler.";
-        /*
-            Metode za sve rute
-            - lista [GET]
-            - detalj {id} [GET]
-            - pretraga [GET]
-            - pretraga [POST]
-            - dodavanje [GET]
-            - dodavanje [POST]
-            - izmena {id} [GET]
-            - izmena [POST]
-            - brisanje [POST]
-        */
+
         $ime = snakeToCamel($tabela);
 
         $rezultat = "<?php
@@ -52,8 +41,6 @@ class {$ime}Controller extends Controller
 
     private function dodajListuGET($tabela)
     {
-        // uvek ide paginacija
-
         $ime_model = snakeToCamel($tabela);
 
         $rez = "
