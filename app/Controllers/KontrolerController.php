@@ -18,11 +18,4 @@ class KontrolerController extends Controller
 
         $this->render($response, 'kontroler.twig', compact('baza', 'tabela', 'kolone'));
     }
-
-    public function postKontroler($request, $response)
-    {
-        $data = $this->data();
-        dd($data);
-    }
-
 }

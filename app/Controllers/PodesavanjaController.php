@@ -54,5 +54,4 @@ class PodesavanjaController extends Controller
         
         $this->render($response, 'home.twig', compact('baza', 'tabela'));
     }
-
 }

@@ -15,6 +15,7 @@ $app->get('/podesavanja', '\App\Controllers\PodesavanjaController:getPodesavanja
 $app->post('/podesavanja', '\App\Controllers\PodesavanjaController:postPodesavanja')->setName('podesavanja');
 
 $app->get('/kontroler', '\App\Controllers\KontrolerController:getKontroler')->setName('kontroler');
-// $app->post('/kontroler', '\App\Controllers\KontrolerController:postKontroler')->setName('kontroler');
 
-$app->get('/pogled', '\App\Controllers\PogledController:getPogled')->setName('pogled');
+$app->get('/pogled-pretraga', '\App\Controllers\PogledController:getPogled')->setName('pogled.pretraga');
+$app->get('/pogled-dodavanje', '\App\Controllers\PogledController:getPogled')->setName('pogled.dodavanje');
+$app->get('/pogled-izmena', '\App\Controllers\PogledController:getPogled')->setName('pogled.izmena');
