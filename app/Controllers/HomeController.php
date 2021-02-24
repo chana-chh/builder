@@ -13,6 +13,7 @@ class HomeController extends Controller
         $izbor = $model->find(1);
         $baza = $izbor->baza;
         $tabela = $izbor->tabela;
+        
         $this->render($response, 'home.twig', compact('baza', 'tabela'));
     }
 

@@ -106,8 +106,8 @@ function dd($var, $print = false, $die = true, $backtrace = false)
     }
 }
 
-// tacnije snake to pascal, ali ovako bolje zvuci
-function snakeToCamel(string $zmija) // inace je ovo kamila
+// zmija u kamilu, tacnije snake to pascal, ali ovako bolje zvuci
+function snakeToCamel(string $zmija)
 {
     $reci = explode('_', $zmija);
 
@@ -120,8 +120,8 @@ function snakeToCamel(string $zmija) // inace je ovo kamila
     return $rezultat;
 }
 
-// tacnije snake to pascal, ali ovako bolje zvuci
-function snakeToKebab(string $zmija) // inace je ovo kamila
+// zmija u cevap
+function snakeToKebab(string $zmija)
 {
     return str_replace('_', '-', $zmija);
 }

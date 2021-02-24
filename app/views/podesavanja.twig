@@ -3,14 +3,14 @@
 {% block naslov %}
 
 <h1 class="display-1 mb-5 text-success">
-	&gt; slim3_builder_ - <span class="text-danger">[KONTROLER]</span> podesavanja
+	&gt; slim3_builder_ - <span class="text-danger">[PODESAVANJE]</span>
 </h1>
 <p class="display-6">
 	<em>baza:</em> <strong class="text-danger">{{ baza }}</strong>
 	&nbsp;&nbsp;&nbsp;&nbsp;
 	<em>tabela:</em> <strong class="text-danger">{{ tabela }}</strong>
 </p>
-<form action="{{ path_for('kontroler') }}" method="POST">
+<form action="{{ path_for('podesavanja') }}" method="POST">
 	<h4>Podesavanje kolona za kontroler</h4>
 	<table class="table table-hover">
 		<thead>
@@ -26,13 +26,15 @@
 				<th>REF kolona</th>
 				<th>Validacija</th>
 				<th>Pretraga</th>
+				<th>Dodavanje</th>
+				<th>Izmena</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for k in kolone %}
 			<tr>
 				<td>{{ k.pozicija }}</td>
-				<td>{{ k.naziv }}</td>
+				<td><strong>{{ k.naziv }}</strong></td>
 				<td>{{ k.tip }}</td>
 				<td>{{ k.duzina }}</td>
 				<td>{{ k.nulabilno }}</td>
@@ -42,14 +44,26 @@
 				<td>{{ k.ref_kolona }}</td>
 				<td>
 					<div class="form-check">
-						<input name="validacija-{{ k.naziv }}" class="form-check-input" type="checkbox" value="" {{
-							(k.validacija==1) ? " checked" : "" }}>
+						<input name="validacija[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.validacija==1) ? " checked" : "" }}>
 					</div>
 				</td>
 				<td>
 					<div class="form-check">
-						<input name="pretraga-{{ k.naziv }}" class="form-check-input" type="checkbox" value="" {{
-							(k.pretraga==1) ? " checked" : "" }}>
+						<input name="pretraga[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.pretraga==1) ? " checked" : "" }}>
+					</div>
+				</td>
+				<td>
+					<div class="form-check">
+						<input name="dodavanje[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.dodavanje==1) ? " checked" : "" }}>
+					</div>
+				</td>
+				<td>
+					<div class="form-check">
+						<input name="izmena[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.izmena==1) ? " checked" : "" }}>
 					</div>
 				</td>
 			</tr>
@@ -57,7 +71,7 @@
 		</tbody>
 	</table>
 	<div class="float-end">
-		<input type="submit" class="btn btn-outline-success" value="Izradi kontroler">
+		<input type="submit" class="btn btn-outline-success" value="Snimi podesavanja">
 	</div>
 </form>
 

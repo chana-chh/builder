@@ -9,7 +9,8 @@
 <p class="display-3 text-center"><em>baza:</em> <strong class="text-danger">{{ baza }}</strong></p>
 <p class="display-3 text-center mb-5"><em>tabela:</em> <strong class="text-danger">{{ tabela }}</strong></p>
 
-<form action="{{ path_for('reset') }}" method="POST" class="text-center">
+<form action="{{ path_for('reset') }}" method="POST" class="text-center"
+onSubmit="return confirm('Si siguran?') ">
 	<input type="submit" value="Resetuj bazu i tabelu" class="btn btn-outline-danger btn-lg mt-5">
 </form>
 
