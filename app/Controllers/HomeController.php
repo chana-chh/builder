@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Izbor;
+use App\Models\Kolone;
 
 class HomeController extends Controller
 {
@@ -12,6 +13,7 @@ class HomeController extends Controller
         $izbor = $model->find(1);
         $baza = $izbor->baza;
         $tabela = $izbor->tabela;
+        
         $this->render($response, 'home.twig', compact('baza', 'tabela'));
     }
 
@@ -28,6 +30,9 @@ class HomeController extends Controller
         $model = new Izbor();
         $baze = $model->update(['baza' => $request->getParam('baza'), 'tabela' => 'null'], 1);
 
+        $sql = "TRUNCATE TABLE kolone;";
+        $model->run($sql);
+
         return $response->withRedirect($this->router->pathFor('pocetna'));
     }
 
@@ -38,8 +43,7 @@ class HomeController extends Controller
         $baza = $data->baza;
         $tabele = null;
 
-        if($baza != null && $baza != 'null' && $baza != '')
-        {
+        if ($baza != null && $baza != 'null' && $baza != '') {
             $tabele = $model->tabele($baza);
         }
 
@@ -50,6 +54,26 @@ class HomeController extends Controller
     {
         $model = new Izbor();
         $model->update(['tabela' => $request->getParam('tabela')], 1);
+        $podaci = $model->find(1);
+
+        $modelK = new Kolone();
+        $kolone = $modelK->polja($podaci->baza, $podaci->tabela);
+        foreach ($kolone as $kol) {
+            $data = [
+                'baza' => $kol->baza,
+                'tabela' => $kol->tabela,
+                'pozicija' => $kol->pozicija,
+                'naziv' => $kol->naziv,
+                'tip' => $kol->tip,
+                'duzina' => $kol->duzina,
+                'nulabilno' => $kol->nulabilno,
+                'podrazumevano' => $kol->podrazumevano,
+                'kljuc' => $kol->kljuc,
+                'ref_tabela' => $kol->ref_tabela,
+                'ref_kolona' => $kol->ref_kolona,
+            ];
+            $modelK->insert($data);
+        }
 
         return $response->withRedirect($this->router->pathFor('pocetna'));
     }
@@ -59,7 +83,9 @@ class HomeController extends Controller
         $model = new Izbor();
         $model->update(['baza' => 'null', 'tabela' => 'null'], 1);
 
-        return $response->withRedirect($this->router->pathFor('pocetna'));
+        $sql = "TRUNCATE TABLE kolone;";
+        $model->run($sql);
 
+        return $response->withRedirect($this->router->pathFor('pocetna'));
     }
 }

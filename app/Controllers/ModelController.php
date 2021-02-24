@@ -48,12 +48,12 @@ class {$ime} extends Model
     {
         $rez = "";
         foreach ($belongsTo as $b) {
-            $ime_modela = snakeToCamel($b->REFERENCED_TABLE_NAME);
+            $ime_modela = snakeToCamel($b->tabela);
             $ime_metode = lcfirst($ime_modela);
             $rez .= "
     public function {$ime_metode}()
     {
-        return \$this->belongsTo('App\\Models\\{$ime_modela}', '{$b->COLUMN_NAME}');
+        return \$this->belongsTo('App\\Models\\{$ime_modela}', '{$b->kolona}');
     }\n";
         }
 
@@ -64,13 +64,13 @@ class {$ime} extends Model
     {
         $rez = "";
         foreach ($hasMany as $h) {
-            $ime_modela = snakeToCamel($h->TABLE_NAME);
+            $ime_modela = snakeToCamel($h->tabela);
             $ime_metode = lcfirst($ime_modela);
 
             $rez .= "
     public function {$ime_metode}()
     {
-        return \$this->hasMany('App\\Models\\{$ime_modela}', '{$h->COLUMN_NAME}');
+        return \$this->hasMany('App\\Models\\{$ime_modela}', '{$h->kolona}');
     }\n";
         }
 
