@@ -48,7 +48,7 @@ class {$ime} extends Model
     {
         $rez = "";
         foreach ($belongsTo as $b) {
-            $ime_modela = snakeToCamel($b->tabela);
+            $ime_modela = snakeToCamel($b->ref_tabela);
             $ime_metode = lcfirst($ime_modela);
             $rez .= "
     public function {$ime_metode}()

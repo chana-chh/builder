@@ -13,7 +13,19 @@ class SkeletController extends Controller
         $izbor = $model->find(1);
         $modelS = new Skelet();
         $skelet = $modelS->all();
-        
+
         $this->render($response, 'skelet.twig', compact('izbor', 'skelet'));
+    }
+
+    public function getPregled($request, $response, $args)
+    {
+        $id = $args['id'];
+        $model = new Izbor();
+        $izbor = $model->find(1);
+
+        $modelS = new Skelet();
+        $skelet = $modelS->find($id);
+
+        $this->render($response, 'pregled.twig', compact('izbor', 'skelet'));
     }
 }

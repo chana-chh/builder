@@ -14,8 +14,7 @@ $app->post('/podesavanja', '\App\Controllers\PodesavanjaController:postPodesavan
 
 $app->get('/skelet', '\App\Controllers\SkeletController:getSkelet')->setName('skelet');
 
-
-$app->get('/pregled', '\App\Controllers\SkeletController:getPregled')->setName('skelet');
+$app->get('/pregled/{id}', '\App\Controllers\SkeletController:getPregled')->setName('pregled');
 
 
 

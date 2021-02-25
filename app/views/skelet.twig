@@ -16,30 +16,33 @@
 	<em>tabela:</em> <strong class="text-danger">{{ izbor.tabela }}</strong>
 </p>
 <h4>Skelet aplikacije</h4>
-	<table class="table table-hover">
-		<thead class="lead">
-			<tr class="table-primary">
-				<th class="w-5">#</th>
-				<th class="w-70">Putanja</th>
-				<th class="w-30">Naziv</th>
-				<th class="w-5 text-end">Pregled</th>
-			</tr>
-		</thead>
-		<tbody class="lead">
-			{% for s in skelet %}
-			<tr>
-				<td>{{ s.id }}</td>
-				<td>{{ s.putanja }}</td>
-				<td><strong>{{ s.naziv }}</strong></td>
-				<td class="text-end">
-					<a href="" class="btn btn-outline-primary">Pregled</a>
-				</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-	<div class="float-end">
-		<input type="submit" class="btn btn-outline-success" value="Snimi podesavanja">
-	</div>
+<table class="table table-hover">
+	<thead class="lead">
+		<tr class="table-primary">
+			<th class="w-5">#</th>
+			<th class="w-60">Putanja</th>
+			<th class="w-25">Naziv</th>
+			<th class="w-5">Sablon</th>
+			<th class="w-5 text-end">Pregled</th>
+		</tr>
+	</thead>
+	<tbody class="lead">
+		{% for s in skelet %}
+		<tr>
+			<td>{{ s.id }}</td>
+			<td>{{ s.putanja }}</td>
+			<td><strong class="text-danger">{{ s.naziv }}</strong></td>
+			<td>
+				<div class="form-check">
+					<input name="sablon" class="form-check-input" type="checkbox" {{ (s.sablon == 1) ? " checked" : "" }} disabled>
+				</div>
+			</td>
+			<td class="text-end">
+				<a href="{{ path_for('pregled', { id: s.id }) }}" class="btn btn-outline-primary">Pregled</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 
 {% endblock naslov %}

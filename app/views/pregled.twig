@@ -2,16 +2,25 @@
 
 {% block naslov %}
 
-<h1 class="display-1 mb-3 text-success">&gt; slim3_builder_ - <span class="text-danger">[{{ tip }}]</span></h1>
+<h1 class="display-1 mb-3 text-success">&gt; slim3_builder_ - <span class="text-danger">[SKELET]</span></h1>
 <p class="display-6">
-	<em>baza:</em> <strong class="text-danger">{{ baza }}</strong>
+	<em>naziv:</em> <strong class="text-danger">{{ izbor.naziv }}</strong>
 	&nbsp;&nbsp;&nbsp;&nbsp;
-	<em>tabela</em> <strong class="text-danger">{{ tabela }}</strong>
+	<em>putanja:</em> <strong class="text-danger">{{ izbor.putanja }}</strong>
 </p>
+<p class="display-6">
+	<em>baza:</em> <strong class="text-danger">{{ izbor.baza }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>tabela:</em> <strong class="text-danger">{{ izbor.tabela }}</strong>
+</p>
+<p class="display-6">
+	<strong class="text-danger">{{ skelet.putanja }}</strong><strong class="text-success">{{ skelet.naziv }}</strong>
+</p>
+
+<pre class="lead"><code>{{ skelet.sadrzaj }}</code></pre>
+
 <p>
-	<span class="text-danger">NAPOMENA: </span>
-	{{ napomena }}
+	<a href="{{ path_for('skelet') }}" class="btn btn-primary btn-lg">Nazad</a>
 </p>
-<pre class="lead bg-dark text-white p-3"><code>{{ rezultat }}</code></pre>
 
 {% endblock naslov %}

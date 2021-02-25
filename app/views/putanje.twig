@@ -7,13 +7,13 @@
 </h1>
 <h4>Podesavanje naziva i putanje aplikacije</h4>
 <form action="{{ path_for('putanje') }}" method="POST" class="row">
-	<div class="col-4">
+	<div class="col-3">
 		<label for="naziv" class="form-label">naziv</label>
-		<input type="text" class="form-control" id="naziv" name="naziv" value="{{ old.naziv ? : izbor.ime  }}">
+		<input type="text" class="form-control" id="naziv" name="naziv" value="{{ old.naziv ? : izbor.naziv  }}">
 	</div>
-	<div class="col-6">
+	<div class="col-7">
 		<label for="putanja" class="form-label">putanja</label>
-		<input type="text" class="form-control" id="putanja" name="putanja">
+		<input type="text" class="form-control" id="putanja" name="putanja" value="{{ old.naziv ? : izbor.putanja  }}">
 	</div>
 	<div class="col-2 d-flex justify-content-end align-items-end">
 		<input type="submit" class="btn btn-outline-success" value="Snimi podesavanja">

@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $model = new Izbor();
         $izbor = $model->find(1);
-        
+
         $this->render($response, 'home.twig', compact('izbor'));
     }
 
