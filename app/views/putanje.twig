@@ -1,0 +1,23 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">
+	&gt; slim3_builder_ - <span class="text-danger">[PUTANJE/NAZIV]</span>
+</h1>
+<h4>Podesavanje naziva i putanje aplikacije</h4>
+<form action="{{ path_for('putanje') }}" method="POST" class="row">
+	<div class="col-4">
+		<label for="naziv" class="form-label">naziv</label>
+		<input type="text" class="form-control" id="naziv" name="naziv" value="{{ old.naziv ? : izbor.ime  }}">
+	</div>
+	<div class="col-6">
+		<label for="putanja" class="form-label">putanja</label>
+		<input type="text" class="form-control" id="putanja" name="putanja">
+	</div>
+	<div class="col-2 d-flex justify-content-end align-items-end">
+		<input type="submit" class="btn btn-outline-success" value="Snimi podesavanja">
+	</div>
+</form>
+
+{% endblock naslov %}

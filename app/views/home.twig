@@ -6,12 +6,49 @@
 
 <p class="display-4 text-center mb-5">Sistem za automatsku izradu web aplikacija</p>
 
-<p class="display-3 text-center"><em>baza:</em> <strong class="text-danger">{{ baza }}</strong></p>
-<p class="display-3 text-center mb-5"><em>tabela:</em> <strong class="text-danger">{{ tabela }}</strong></p>
-
-<form action="{{ path_for('reset') }}" method="POST" class="text-center"
-onSubmit="return confirm('Si siguran?') ">
-	<input type="submit" value="Resetuj bazu i tabelu" class="btn btn-outline-danger btn-lg mt-5">
-</form>
+<table class="table table-hover">
+	<tbody>
+		<tr>
+			<th class="w-20"><span class="display-6">naziv</span></th>
+			<td class="w-80"><span class="text-danger display-6">{{ izbor.naziv }}</span></td>
+			<td class="w-20 text-end">
+				<a href="{{ path_for('putanje') }}" class="btn btn-outline-primary btn-lg">Promeni</a>
+			</td>
+		</tr>
+		<tr>
+			<th><span class="display-6">putanja</span></th>
+			<td><span class="text-danger display-6">{{ izbor.putanja }}</span></td>
+			<td class="text-end">
+				<a href="{{ path_for('putanje') }}" class="btn btn-outline-primary btn-lg">Promeni</a>
+			</td>
+		</tr>
+		<tr>
+			<th><span class="display-6">baza</span></th>
+			<td><span class="text-danger display-6">{{ izbor.baza }}</span></td>
+			<td class="text-end">
+				<a href="{{ path_for('baze') }}" class="btn btn-outline-primary btn-lg">Promeni</a>
+			</td>
+		</tr>
+		<tr>
+			<th><span class="display-6">tabela</span></th>
+			<td><span class="text-danger display-6">{{ izbor.tabela }}</span></td>
+			<td class="text-end">
+				<a href="{{ path_for('tabele') }}" class="btn btn-outline-primary btn-lg">Promeni</a>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<a href="{{ path_for('podesavanja') }}" class="btn btn-outline-success btn-lg">Podesavanje</a>
+			</th>
+			<td></td>
+			<td class="text-end">
+				<form action="{{ path_for('reset') }}" method="POST" class="text-end"
+				onSubmit="return confirm('Si siguran?') ">
+					<input type="submit" value="Resetuj podatke" class="btn btn-outline-danger btn-lg">
+				</form>
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 {% endblock naslov %}

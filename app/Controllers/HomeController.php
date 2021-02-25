@@ -11,10 +11,8 @@ class HomeController extends Controller
     {
         $model = new Izbor();
         $izbor = $model->find(1);
-        $baza = $izbor->baza;
-        $tabela = $izbor->tabela;
         
-        $this->render($response, 'home.twig', compact('baza', 'tabela'));
+        $this->render($response, 'home.twig', compact('izbor'));
     }
 
     public function getBaze($request, $response)
@@ -56,6 +54,9 @@ class HomeController extends Controller
         $model->update(['tabela' => $request->getParam('tabela')], 1);
         $podaci = $model->find(1);
 
+        $sql = "TRUNCATE TABLE kolone;";
+        $model->run($sql);
+
         $modelK = new Kolone();
         $kolone = $modelK->polja($podaci->baza, $podaci->tabela);
         foreach ($kolone as $kol) {
@@ -78,10 +79,28 @@ class HomeController extends Controller
         return $response->withRedirect($this->router->pathFor('pocetna'));
     }
 
+    public function getPutanje($request, $response)
+    {
+        $model = new Izbor();
+        $izbor = $model->find(1);
+
+        $this->render($response, 'putanje.twig', compact('izbor'));
+    }
+
+    public function postPutanje($request, $response)
+    {
+        $data=$this->data();
+
+        $model = new Izbor();
+        $model->update($data, 1);
+
+        return $response->withRedirect($this->router->pathFor('pocetna'));
+    }
+
     public function postReset($request, $response)
     {
         $model = new Izbor();
-        $model->update(['baza' => 'null', 'tabela' => 'null'], 1);
+        $model->update(['baza' => 'null', 'tabela' => 'null', 'naziv' => 'null', 'putanja' => 'null'], 1);
 
         $sql = "TRUNCATE TABLE kolone;";
         $model->run($sql);

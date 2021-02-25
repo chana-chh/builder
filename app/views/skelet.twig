@@ -1,0 +1,45 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-5 text-success">
+	&gt; slim3_builder_ - <span class="text-danger">[SKELET]</span>
+</h1>
+<p class="display-6">
+	<em>naziv:</em> <strong class="text-danger">{{ izbor.naziv }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>putanja:</em> <strong class="text-danger">{{ izbor.putanja }}</strong>
+</p>
+<p class="display-6">
+	<em>baza:</em> <strong class="text-danger">{{ izbor.baza }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>tabela:</em> <strong class="text-danger">{{ izbor.tabela }}</strong>
+</p>
+<h4>Skelet aplikacije</h4>
+	<table class="table table-hover">
+		<thead class="lead">
+			<tr class="table-primary">
+				<th class="w-5">#</th>
+				<th class="w-70">Putanja</th>
+				<th class="w-30">Naziv</th>
+				<th class="w-5 text-end">Pregled</th>
+			</tr>
+		</thead>
+		<tbody class="lead">
+			{% for s in skelet %}
+			<tr>
+				<td>{{ s.id }}</td>
+				<td>{{ s.putanja }}</td>
+				<td><strong>{{ s.naziv }}</strong></td>
+				<td class="text-end">
+					<a href="" class="btn btn-outline-primary">Pregled</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="float-end">
+		<input type="submit" class="btn btn-outline-success" value="Snimi podesavanja">
+	</div>
+
+{% endblock naslov %}

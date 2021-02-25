@@ -46,12 +46,7 @@ class PodesavanjaController extends Controller
             
             $model->update($data, $k->id);
         }
-
-        $modelI = new Izbor();
-        $izbor = $modelI->find(1);
-        $baza = $izbor->baza;
-        $tabela = $izbor->tabela;
         
-        $this->render($response, 'home.twig', compact('baza', 'tabela'));
+        return $response->withRedirect($this->router->pathFor('pocetna'));
     }
 }

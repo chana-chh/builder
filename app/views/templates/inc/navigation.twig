@@ -10,26 +10,50 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ path_for('pocetna') }}"><i class="fas fa-home"></i> Početna</a>
+          <a class="nav-link" href="{{ path_for('pocetna') }}"><i class="fas fa-home"></i> HOME</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fas fa-code"></i> APP
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="{{ path_for('putanje') }}">Naziv aplikacije</a>
+            <a class="dropdown-item" href="{{ path_for('baze') }}">Izbor baze</a>
+            <a class="dropdown-item" href="{{ path_for('tabele') }}">Izbor tabele</a>
+            <a class="dropdown-item" href="{{ path_for('podesavanja') }}">Podesavanja</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path_for('skelet') }}">Skelet</a>
+            <a class="dropdown-item" href="{{ path_for('podesavanja') }}">Meso</a>
+          </div>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
             <i class="fab fa-php"></i> PHP
           </a>
           <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" href="{{ path_for('baze') }}"><span class="text-danger">1.</span> Izbor baze</a>
-            <a class="dropdown-item" href="{{ path_for('tabele') }}"><span class="text-danger">2.</span> Izbor tabele</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path_for('rute') }}"><span class="text-danger">3.</span> Rute</a>
-            <a class="dropdown-item" href="{{ path_for('model') }}"><span class="text-danger">4.</span> Model</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path_for('podesavanja') }}"><span class="text-danger">5.</span> Podesavanja</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path_for('kontroler') }}"><span class="text-danger">6.</span> Kontroler</a>
-            <a class="dropdown-item" href="{{ path_for('pogled') }}"><span class="text-danger">7.</span> Pogled</a>
-          </div>
+            <a class="dropdown-item" href="{{ path_for('rute') }}">Rute</a>
+            <a class="dropdown-item" href="{{ path_for('model') }}">Model</a>
+            <a class="dropdown-item" href="{{ path_for('kontroler') }}">Kontroler</a>
         </li>
 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fab fa-html5"></i> HTML
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="{{ path_for('pogled.pretraga') }}">Pogled pretraga</a>
+            <a class="dropdown-item" href="{{ path_for('pogled.dodavanje') }}">Pogled dodavanje</a>
+            <a class="dropdown-item" href="{{ path_for('pogled.izmena') }}">Pogled izmena</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path_for('pocetna') }}"><i class="fab fa-css3"></i> CSS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path_for('pocetna') }}"><i class="fab fa-js-square"></i> JS</a>
+        </li>
       </ul>
     </div>
   </div>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ APP_NAME }}</title>
   <link rel="shortcut icon" href="{{ base_url() }}/favicon.png" />
+  <link rel="stylesheet" href="{{ base_url() }}/css/highlight/dracula.css">
   <link rel="stylesheet" href="{{ base_url() }}/css/fontawesome.min.css" />
   <link rel="stylesheet" href="{{ base_url() }}/css/brands.min.css" />
   <link rel="stylesheet" href="{{ base_url() }}/css/solid.min.css" />
@@ -37,7 +38,9 @@
   </main>
 
   <script src="{{ base_url() }}/js/bootstrap.min.js"></script>
+  <script src="{{ base_url() }}/js/highlight.min.js"></script>
   <script src="{{ base_url() }}/js/app.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   {% block skripta %}{% endblock skripta %}
 </body>
 
