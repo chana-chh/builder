@@ -1,0 +1,17 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-3 text-success">&gt; slim3_builder_ - <span class="text-danger">[{{ tip }}]</span></h1>
+<p class="display-6">
+	<em>baza:</em> <strong class="text-danger">{{ baza }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>tabela</em> <strong class="text-danger">{{ tabela }}</strong>
+</p>
+<p>
+	<span class="text-danger">NAPOMENA: </span>
+	{{ napomena }}
+</p>
+<pre class="lead bg-dark text-white p-3"><code>{{ rezultat }}</code></pre>
+
+{% endblock naslov %}
