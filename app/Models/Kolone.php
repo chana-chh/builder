@@ -13,7 +13,7 @@ class Kolone extends Model
         $sql = "SELECT  INFORMATION_SCHEMA.COLUMNS.TABLE_SCHEMA AS baza, INFORMATION_SCHEMA.COLUMNS.TABLE_NAME AS tabela,
                         INFORMATION_SCHEMA.COLUMNS.ORDINAL_POSITION AS pozicija, INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME AS naziv,
                         INFORMATION_SCHEMA.COLUMNS.DATA_TYPE AS tip, INFORMATION_SCHEMA.COLUMNS.CHARACTER_MAXIMUM_LENGTH AS duzina,
-                        INFORMATION_SCHEMA.COLUMNS.IS_NULLABLE AS nulabilno, INFORMATION_SCHEMA.COLUMNS.COLUMN_DEFAULT AS povrazumevano,
+                        INFORMATION_SCHEMA.COLUMNS.IS_NULLABLE AS nulabilno, INFORMATION_SCHEMA.COLUMNS.COLUMN_DEFAULT AS podrazumevano,
                         INFORMATION_SCHEMA.COLUMNS.COLUMN_KEY AS kljuc,
                         veza_od.ref_tabela, veza_od.ref_kolona
                 FROM INFORMATION_SCHEMA.COLUMNS
@@ -43,6 +43,37 @@ class Kolone extends Model
                         ORDINAL_POSITION AS pozicija, REFERENCED_TABLE_NAME AS ref_tabela, REFERENCED_COLUMN_NAME AS ref_kolona
                 FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
                 WHERE REFERENCED_TABLE_SCHEMA = '{$baza}' AND TABLE_NAME = '{$tabela}';";
+        return $this->fetch($sql);
+    }
+
+    public function imaDatum()
+    {
+        $rezultat = false;
+        $sql = "SELECT COUNT(*) as broj FROM {$this->table} WHERE tip = :tip;";
+        $params = [':tip' => "date"];
+        $broj = $this->fetch($sql, $params)[0];
+        if($broj->broj > 0)
+        {
+            $rezultat = true;
+        }
+        return $rezultat;
+    }
+
+    public function zaSanitaciju()
+    {
+        $sql = "SELECT naziv FROM {$this->table} WHERE pretraga = 1 AND (tip = 'varchar' OR tip = 'text');";
+        return $this->fetch($sql);
+    }
+
+    public function refet()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE pretraga = 1 AND ref_tabela IS NOT NULL;";
+        return $this->fetch($sql);
+    }
+
+    public function pretraga()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE pretraga = 1;";
         return $this->fetch($sql);
     }
 }
