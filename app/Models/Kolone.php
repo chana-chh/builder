@@ -46,17 +46,16 @@ class Kolone extends Model
         return $this->fetch($sql);
     }
 
-    public function imaDatum()
+    public function datumi()
     {
-        $rezultat = false;
-        $sql = "SELECT COUNT(*) as broj FROM {$this->table} WHERE tip = :tip;";
-        $params = [':tip' => "date"];
-        $broj = $this->fetch($sql, $params)[0];
-        if($broj->broj > 0)
-        {
-            $rezultat = true;
-        }
-        return $rezultat;
+        $sql = "SELECT * FROM {$this->table} WHERE pretraga = 1 AND (tip = 'date' OR tip = 'time' OR tip = 'timestamp');";
+        return $this->fetch($sql);
+    }
+
+    public function brojke()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE pretraga = 1 AND (tip = 'decimal' OR tip = 'int');";
+        return $this->fetch($sql);
     }
 
     public function zaSanitaciju()
