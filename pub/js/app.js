@@ -38,7 +38,7 @@ const sendAjaxRequest = (method, url, data) => {
       if (typeof data === "string") {
         data = formToJSON(data);
       } else {
-        addCsrfToken(data);
+        // addCsrfToken(data);
       }
       xhr.setRequestHeader("Content-Type", "application/json");
     }

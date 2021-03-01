@@ -1,0 +1,35 @@
+{% extends "templates/app.twig" %} {% block stil %} {% endblock stil %} {% block naslov %}
+<h1>ChaSha PHP - JS tabela</h1>
+<!-- zbog POST ajax zahteva mora da ima csrf -->
+{{ csrf | raw }}
+<!--
+	tabela treba da ima id preko koga se prosledjuje u klasu CSTable
+	podesavanja za CSTable se postavljaju na th elemente u thead
+	data-name - obavezno polje imora da bude isto kao i naziv kolone u bazi
+	data-sort - ako se kolona koristi za sortiranje
+	data-search - ako se kolona koristi za pretrazivanje
+ -->
+<table class="small borders striped hover" id="tabela">
+  <thead>
+    <tr>
+      <th class="w-5" data-name="id" data-sort>#</th>
+      <th class="w-10" data-name="name" data-sort data-search>Name</th>
+      <th class="w-20" data-name="email" data-search>Email</th>
+      <th class="w-10" data-name="dob" data-sort data-search>DoB</th>
+      <th class="w-10" data-name="city" data-sort data-search>City</th>
+      <th class="w-5" data-name="country" data-sort data-search>Country</th>
+      <th class="w-5 text-right" data-name="number" data-sort>Number</th>
+      <th class="w-30" data-name="info" data-search>Info</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+{% endblock naslov %} {% block sadrzaj %} {% endblock sadrzaj %} {% block traka %} {% endblock traka %} {% block skripta
+%}
+<script src="{{ base_url() }}/js/tabela.js"></script>
+<script>
+  tabela1 = new CSTable(document.getElementById("tabela"), {
+    url: "{{ path_for('tabela') }}" // ajax putanja
+  });
+</script>
+{% endblock skripta %}

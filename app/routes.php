@@ -31,3 +31,11 @@ $app->get('/kontroler', '\App\Controllers\KontrolerController:getKontroler')->se
 $app->get('/pogled-pretraga', '\App\Controllers\PogledController:getPogled')->setName('pogled.pretraga');
 $app->get('/pogled-dodavanje', '\App\Controllers\PogledController:getPogled')->setName('pogled.dodavanje');
 $app->get('/pogled-izmena', '\App\Controllers\PogledController:getPogled')->setName('pogled.izmena');
+
+
+// JS
+$app->get('/tabela', '\App\Controllers\TabelaController:getTabela')->setName('tabela');
+$app->post('/tabela', '\App\Controllers\TabelaController:postTabela')->setName('tabela');
+
+$app->get('/kalendar', '\App\Controllers\KalendarController:getKalendar')->setName('kalendar');
+$app->post('/kalendar', '\App\Controllers\KalendarController:postKalendar')->setName('kalendar');
