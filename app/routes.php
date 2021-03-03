@@ -27,6 +27,8 @@ $app->get('/rute', '\App\Controllers\RuteController:getRute')->setName('rute');
 $app->get('/model', '\App\Controllers\ModelController:getModel')->setName('model');
 
 $app->get('/kontroler', '\App\Controllers\KontrolerController:getKontroler')->setName('kontroler');
+$app->get('/kontroler/meso-izmena/{id}', '\App\Controllers\KontrolerController:getMesoIzmena')->setName('kontroler.meso.izmena.get');
+$app->get('/kontroler/skelet-izmena/{id}', '\App\Controllers\KontrolerController:getSkeletIzmena')->setName('kontroler.skelet.izmena.get');
 
 $app->get('/pogled-pretraga', '\App\Controllers\PogledController:getPogled')->setName('pogled.pretraga');
 $app->get('/pogled-dodavanje', '\App\Controllers\PogledController:getPogled')->setName('pogled.dodavanje');

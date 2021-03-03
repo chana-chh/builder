@@ -70,3 +70,5 @@
 [01-Mar-2021 19:10:54 Europe/Belgrade] PHP Notice:  Undefined property: App\Models\Kolone::$naziv in D:\xampp\htdocs\builder\app\Controllers\KontrolerController.php on line 77
 [01-Mar-2021 19:10:54 Europe/Belgrade] PHP Notice:  Undefined property: App\Models\Kolone::$naziv in D:\xampp\htdocs\builder\app\Controllers\KontrolerController.php on line 85
 [01-Mar-2021 19:10:54 Europe/Belgrade] PHP Notice:  Undefined property: App\Models\Kolone::$naziv in D:\xampp\htdocs\builder\app\Controllers\KontrolerController.php on line 85
+[02-Mar-2021 08:21:28 Europe/Belgrade] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\builder\app\Controllers\KontrolerController.php on line 117
+[03-Mar-2021 08:02:10 Europe/Belgrade] PHP Notice:  Trying to get property 'sadrzaj' of non-object in E:\xampp\htdocs\builder\app\Controllers\KontrolerController.php on line 41

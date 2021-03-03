@@ -60,7 +60,7 @@ class Kolone extends Model
 
     public function zaSanitaciju()
     {
-        $sql = "SELECT naziv FROM {$this->table} WHERE pretraga = 1 AND (tip = 'varchar' OR tip = 'text');";
+        $sql = "SELECT naziv FROM {$this->table} WHERE pretraga = 1 AND (tip = 'varchar' OR tip = 'text' OR tip = 'enum');";
         return $this->fetch($sql);
     }
 
@@ -73,6 +73,23 @@ class Kolone extends Model
     public function pretraga()
     {
         $sql = "SELECT * FROM {$this->table} WHERE pretraga = 1;";
+        return $this->fetch($sql);
+    }
+
+    public function validacija()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE validacija = 1;";
+        return $this->fetch($sql);
+    }
+
+    public function log()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE log = 1;";
+        return $this->fetch($sql);
+    }
+    public function sortiranje()
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE sortiranje = 1;";
         return $this->fetch($sql);
     }
 }

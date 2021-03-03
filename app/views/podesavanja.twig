@@ -28,6 +28,8 @@
 				<th>Pretraga</th>
 				<th>Dodavanje</th>
 				<th>Izmena</th>
+				<th>Log</th>
+				<th>Sortiranje</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -64,6 +66,18 @@
 					<div class="form-check">
 						<input name="izmena[]" class="form-check-input" type="checkbox"
 						value="{{ k.id }}" {{ (k.izmena==1) ? " checked" : "" }}>
+					</div>
+				</td>
+				<td>
+					<div class="form-check">
+						<input name="log[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.log==1) ? " checked" : "" }}>
+					</div>
+				</td>
+				<td>
+					<div class="form-check">
+						<input name="sortiranje[]" class="form-check-input" type="checkbox"
+						value="{{ k.id }}" {{ (k.sortiranje==1) ? " checked" : "" }}>
 					</div>
 				</td>
 			</tr>

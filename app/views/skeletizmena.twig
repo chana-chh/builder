@@ -1,0 +1,40 @@
+{% extends "templates/app.twig" %}
+
+{% block naslov %}
+
+<h1 class="display-1 mb-3 text-success">&gt; slim3_builder_ - <span class="text-danger">[IZMENA SKELETA]</span></h1>
+<p class="display-6">
+	<em>putanja:</em> <strong class="text-danger">{{ skelet.putanja }}</strong>
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<em>naziv:</em> <strong class="text-danger">{{ skelet.naziv }}</strong>
+</p>
+<form action="{{ path_for('putanje') }}" method="POST" class="row">
+	<div class="row">
+		<div class="col">
+            <label for="sadrzaj">Sadržaj</label>
+            <textarea class="form-control" name="sadrzaj" id="sadrzaj" onkeyup="textArea(this)" style="overflow:hidden">{{ old.sadrzaj ? : skelet.sadrzaj }}</textarea>
+        </div>
+    </div>
+    <div class="row">
+	<div class="col-3">
+		<label for="naziv" class="form-label">naziv</label>
+		<input type="text" class="form-control" id="naziv" name="naziv" value="{{ old.naziv ? : skelet.naziv  }}">
+	</div>
+	<div class="col-7">
+		<label for="putanja" class="form-label">putanja</label>
+		<input type="text" class="form-control" id="putanja" name="putanja" value="{{ old.putanja ? : skelet.putanja  }}">
+	</div>
+	<div class="col-2 d-flex justify-content-end align-items-end">
+		<input type="submit" class="btn btn-outline-success" value="Snimi izmene">
+	</div>
+	</div>
+</form>
+{% endblock naslov %}
+{% block skripta %}
+<script>
+function textArea(element) {
+  element.style.height = "1px";
+  element.style.height = (25+element.scrollHeight)+"px";
+}
+</script>
+{% endblock skripta %}

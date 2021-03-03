@@ -12,6 +12,13 @@
 	<span class="text-danger">NAPOMENA: </span>
 	{{ napomena }}
 </p>
-<pre class="lead bg-dark text-white p-3"><code>{{ rezultat }}</code></pre>
-
 {% endblock naslov %}
+{% block sadrzaj %}
+<pre class="bg-dark text-white p-3"><code>{{ modkod.sadrzaj }}</code></pre>
+{% endblock sadrzaj %}
+{% block traka %}
+<div class="sticky-top">
+<a href="{{ path_for('kontroler.meso.izmena.get', {id:modkod.id}) }}" class="btn btn-outline-danger">Izmena mesa</a>
+<a href="{{ path_for('kontroler.skelet.izmena.get', {id:skelet.id}) }}" class="btn btn-outline-danger">Izmena skeleta</a>
+</div>
+{% endblock traka %}

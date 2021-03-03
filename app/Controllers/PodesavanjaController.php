@@ -27,6 +27,8 @@ class PodesavanjaController extends Controller
         $pretraga = isset($data['pretraga']) ? $data['pretraga'] : null;
         $dodavanje = isset($data['dodavanje']) ? $data['dodavanje'] : null;
         $izmena = isset($data['izmena']) ? $data['izmena'] : null;
+        $log = isset($data['log']) ? $data['log'] : null;
+        $sortiranje = isset($data['sortiranje']) ? $data['sortiranje'] : null;
 
         $model = new Kolone();
         $kolone = $model->all();
@@ -36,12 +38,16 @@ class PodesavanjaController extends Controller
             $p = ($pretraga != null && in_array($k->id, $pretraga)) ? 1 : 0;
             $d = ($dodavanje != null && in_array($k->id, $dodavanje)) ? 1 : 0;
             $i = ($izmena != null && in_array($k->id, $izmena)) ? 1 : 0;
+            $l = ($log != null && in_array($k->id, $log)) ? 1 : 0;
+            $s = ($sortiranje != null && in_array($k->id, $sortiranje)) ? 1 : 0;
             
             $data = [
                 'validacija' => $v,
                 'pretraga' => $p,
                 'dodavanje' => $d,
                 'izmena' => $i,
+                'log' => $l,
+                'sortiranje' => $s,
             ];
             
             $model->update($data, $k->id);
