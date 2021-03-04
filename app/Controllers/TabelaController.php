@@ -21,7 +21,7 @@ class TabelaController extends Controller
     public function postTabela($request, $response)
     {
         $data = $request->getParams();
-        $this->addCsrfToken($data);
+        // $this->addCsrfToken($data);
         $m = new Tabela();
         $where = "";
         $search = $data['search'];

@@ -111,13 +111,16 @@ class CSTable {
     c3.classList.add("col-4");
     const search = document.createElement("input");
     search.setAttribute("type", "text");
+    search.classList.add("form-control");
     search.onkeyup = e => {
-      if (e.keyCode === 13) {
+      if (e.key === "Enter") {
         e.preventDefault();
         if (search.value === "") {
-          search.classList.remove("bg-red-light");
+          search.classList.remove("bg-danger");
+          search.classList.remove("text-white");
         } else {
-          search.classList.add("bg-red-light");
+          search.classList.add("bg-danger");
+          search.classList.add("text-white");
         }
         this.search = search.value;
         this.page = 1;
@@ -125,7 +128,8 @@ class CSTable {
       }
       if (e.key === "Escape") {
         e.preventDefault();
-        search.classList.remove("bg-red-light");
+        search.classList.remove("bg-danger");
+        search.classList.remove("text-white");
         search.value = "";
         this.search = "";
         this.page = 1;
@@ -142,6 +146,8 @@ class CSTable {
   createPerPage() {
     const pp = this.options.perPage;
     const el = document.createElement("select");
+    el.classList.add("form-select");
+    el.classList.add("mb-2");
     pp.forEach(o => {
       const option = document.createElement("option");
       option.setAttribute("value", o);
@@ -236,7 +242,7 @@ class CSTable {
       sortColumn: this.sortColumn,
       sortOrder: this.sortOrder
     }).then(data => {
-      updateCsrfToken(data);
+      //updateCsrfToken(data);
       this.data = data;
       this.tbody.innerHTML = data.tbody;
       this.addBottomBar();

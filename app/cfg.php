@@ -10,7 +10,7 @@ $config = [
         'db' => [
             'dsn' => 'mysql:host=127.0.0.1;dbname=baza;charset=utf8mb4',
             'username' => 'root',
-            'password' => 'vir5373plus!',
+            'password' => '',
             'options' => [
                 \PDO::ATTR_PERSISTENT => true,
                 \PDO::ATTR_EMULATE_PREPARES => false,

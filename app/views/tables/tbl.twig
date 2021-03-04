@@ -1,0 +1,14 @@
+{% for row in pgn.data %}
+<tr>
+  <td class="color-red-light">
+    <em>{{ row.id }}</em>
+  </td>
+  <td>{{ row.name }}</td>
+  <td>{{ row.email }}</td>
+  <td>{{ row.dob | date() }}</td>
+  <td>{{ row.city }}</td>
+  <td>{{ row.country }}</td>
+  <td class="text-right">{{ row.number | number_format(0) }}</td>
+  <td>{{ row.info }}</td>
+</tr>
+{% endfor %}
